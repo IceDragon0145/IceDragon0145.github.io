@@ -13,7 +13,11 @@
 
     #img_document_front_page_image {
         position: absolute; 
-        height: 100%;
-        right: 0;
+        width: 50%;
+        max-height: 100%;
+        left: 50%;
+        translate: 0 -50%;
+        top: 50%;
+        object-fit: contain;
     }
 }
