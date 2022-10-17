@@ -152,11 +152,15 @@
             document.getElementById('div_document').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
 
             playBackground().catch(() => {
-                // autopay failed.
+                // autoplay failed.
                 let autoplayDim = document.getElementById('div_autoplay_dim');
+                autoplayDim.style.animation = 'fade_in 0.5s';
                 autoplayDim.style.visibility = 'visible';
                 autoplayDim.onclick = () => {
-                    playBackground().then(() => autoplayDim.style.visibility = '');
+                    playBackground().then(() => {
+                      autoplayDim.style.animation = 'fade_out 0.5s';
+                      autoplayDim.style.visibility = '';
+                    });
                 };
             });
             setTitle('基礎程式設計 期末報告');

@@ -41,6 +41,8 @@ body {
     min-width: 300px;
     max-width: calc(100% - 64px);
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     padding: 16px;
     background-color: rgb(50, 50, 50);
     border: 1px solid rgb(50, 50, 50);
