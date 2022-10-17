@@ -1,0 +1,121 @@
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+#div_autoplay_dim {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: 0.2s;
+    visibility: hidden;
+}
+
+#div_autoplay_dim:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#div_autoplay_dim:active {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#div_top_app_bar {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 8px #666;
+}
+
+#div_snack_bar {
+    position: fixed;
+    top: 100%;
+    right: 16px;
+    min-width: 300px;
+    max-width: calc(100% - 64px);
+    overflow: hidden;
+    padding: 16px;
+    background-color: rgb(50, 50, 50);
+    border: 1px solid rgb(50, 50, 50);
+    border-radius: 8px;
+    box-shadow: 0 0 8px #666;
+    color: white;
+    visibility: hidden;
+}
+
+#div_snack_bar.show {
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    transform: translateY(calc(-100% - 16px));
+    visibility: visible;
+}
+
+#div_snack_bar.hide {
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+#div_title {
+    position: absolute;
+    top: 50%;
+    padding-left: 8px;
+    transform: translateY(-50%);
+    display: inline-block;
+    font-size: large;
+}
+
+#div_document {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    bottom: 0px;
+    overflow: auto;
+}
+
+#div_document_front_page_image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url('/img/115888316_123373826121968_6930414921463986417_n.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#div_document_front_page_text_container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+#div_document_front_page_text {
+    position: absolute;
+}
+
+.button_circle {
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    border-radius: 50%;
+}
+
+.button_circle:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.button_circle:active {
+    background-color: rgba(0, 0, 0, 0.4);
+}

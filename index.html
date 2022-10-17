@@ -1,152 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            @keyframes slide_in_left {
-                from {
-                    opacity: 0%;
-                    transform: translate(-25%, 0);
-                }
-                to {
-                    opacity: 100%;
-                    transform: translate(0, 0);
-                }
-            }
-
-            body {
-                font-family: 'Noto Sans TC', sans-serif;
-            }
-
-            #div_autoplay_dim {
-                position: fixed;
-                height: 100%;
-                width: 100%;
-                top: 0px;
-                left: 0px;
-                cursor: pointer;
-                color: white;
-                background-color: rgba(0, 0, 0, 0.7);
-                transition: 0.2s;
-                visibility: hidden;
-            }
-
-            #div_autoplay_dim:hover {
-                background-color: rgba(0, 0, 0, 0.6);
-            }
-            
-            #div_autoplay_dim:active {
-                background-color: rgba(0, 0, 0, 0.8);
-            }
-
-            #div_top_app_bar {
-                position: absolute;
-                width: 100%;
-                background-color: white;
-	            box-shadow: 0 0 8px #666;
-            }
-
-            #div_snack_bar {
-                position: fixed;
-                top: 100%;
-                right: 16px;
-                min-width: 300px;
-                max-width: calc(100% - 64px);
-                overflow: hidden;
-                padding: 16px;
-                background-color: rgb(50, 50, 50);
-		        border: 1px solid rgb(50, 50, 50);
-                border-radius: 8px;
-	            box-shadow: 0 0 8px #666;
-                color: white;
-                visibility: hidden;
-            }
-
-            #div_snack_bar.show {
-                -webkit-transition: 0.2s;
-                -moz-transition: 0.2s;
-                -ms-transition: 0.2s;
-                -o-transition: 0.2s;
-                transition: 0.2s;
-                transform: translateY(calc(-100% - 16px));
-                visibility: visible;
-            }
-
-            #div_snack_bar.hide {
-                -webkit-transition: 0.2s;
-                -moz-transition: 0.2s;
-                -ms-transition: 0.2s;
-                -o-transition: 0.2s;
-                transition: 0.2s;
-                transform: translateY(0);
-                visibility: visible;
-            }
-
-            #div_title {
-                position: absolute;
-                top: 50%;
-                padding-left: 8px;
-                transform: translateY(-50%);
-                display: inline-block;
-                font-size: large;
-            }
-
-            #div_document {
-                position: absolute;
-                width: 100%;
-                top: 0px;
-                bottom: 0px;
-                overflow: auto;
-            }
-
-            #div_document_front_page_image {
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                background-image: url('./115888316_123373826121968_6930414921463986417_n.jpg');
-                background-repeat: no-repeat;
-                background-size:contain;
-                background-position-x: 110%;
-                background-position-y: center;
-            }
-
-            #div_document_front_page_text_container {
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                color: white;;
-                background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-            }
-
-            #div_document_front_page_text {
-                position: absolute;
-                top: 50%;
-                left: 10%;
-                right: 60%;
-                translate: 0 -50%;
-                animation: slide_in_left 1s;
-            }
-
-            .button_circle {
-                -webkit-transition: 0.2s;
-                -moz-transition: 0.2s;
-                -ms-transition: 0.2s;
-                -o-transition: 0.2s;
-                transition: 0.2s;
-                border-radius: 50%;
-            }
-
-            .button_circle:hover {
-                background-color: rgba(0, 0, 0, 0.2);
-            }
-
-            .button_circle:active {
-                background-color: rgba(0, 0, 0, 0.4);
-            }
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet" />
+        <link href="style.css" rel="stylesheet" />
+        <link href="style-desktop.css" rel="stylesheet" />
+        <link href="style-mobile.css" rel="stylesheet" />
+        <link href="anim.css" rel="stylesheet" />
     </head>
     <body>
         <div style="position: fixed; top: 0px; left: 0px; height: 100%; width: 100%;">
@@ -155,19 +18,16 @@
                     <div id="div_document_front_page_image"></div>
                     <div id="div_document_front_page_text_container">
                         <div id="div_document_front_page_text">
-                            <div style="font-size:xx-large;">哆啦A夢（ドラえもん）</div>
+                            <div style="font-size:xx-large;">
+                                哆啦A夢<br/>
+                                （ドラえもん）
+                            </div>
                             <p>
                                 作者：藤子·F·不二雄<br/>
                                 主題：兒童、科幻類型日本漫畫
                             </p>
                             <p>
                                 故事敘述一隻來自22世紀貓型機器人——哆啦A夢，受原本主人野比世修之託從未來回到現代，幫助他高祖父——野比大雄。
-                            </p>
-                            <p>
-                                野比大雄是家中獨子，是住在日本的五年級小學生。他和來自未來22世紀的機器貓哆啦A夢共同生活。大雄雖然是普通小學生，但是對於運動和唸書都很不擅長，學業成績很差，是零分的常駐得主，時常遭到同學欺負。此外運氣也不好，經常遇到各種災難，連猜拳都經常會輸。
-                            </p>
-                            <p>
-                                由於大雄此種特性，也影響到了未來子孫的生活和表現，為了讓情況有所改善，其子孫野比世修從未來的22世紀帶了哆啦A夢來幫助大雄改變命運，利用哆啦A夢許多未來世界的秘密道具協助大雄，故事就此展開。
                             </p>
                         </div>
                     </div>
@@ -191,31 +51,31 @@
             let backgroundTracks = {
                 'doraemon_no_uta_1992': {
                     name: '1992年 哆啦A夢之歌 山野智子版本',
-                    url: 'https://static.wikia.nocookie.net/doraemon/images/2/23/Doraemon_no_Uta_-_Yamano_Satoko.ogg/revision/latest?cb=20190620135217&path-prefix=en',
+                    url: '/audio/doraemon_no_uta_1992.ogg',
                     volume: 0.2,
                     startTime: 2,
                 },
                 'hagushichao_2005': {
                     name: '2005年 擁抱吧',
-                    url: 'https://static.wikia.nocookie.net/doraemon/images/b/bc/Hagushichao_-_Natsukawa_Rimi.ogg/revision/latest?cb=20171210172632&path-prefix=en',
+                    url: '/audio/hagushichao_2005.ogg',
                     volume: 0.2,
                     startTime: 0,
                 },
                 'yume_wo_kanaete_doraemon_2007': {
                     name: '2007年 實現夢想的哆啦A夢',
-                    url: 'https://static.wikia.nocookie.net/doraemon/images/b/b0/Yume_Wo_Kanaete_Doraemon_MAO.ogg/revision/latest?cb=20151008101700&path-prefix=en',
+                    url: '/audio/yume_wo_kanaete_doraemon_2007.ogg',
                     volume: 0.2,
                     startTime: 0,
                 },
                 'doraemon_2019': {
                     name: '2019年 哆啦A夢（星野源） ',
-                    url: 'https://static.wikia.nocookie.net/doraemon/images/3/3a/Doraemon-HoshinoGen.ogg/revision/latest?cb=20191020140504&path-prefix=en',
+                    url: '/audio/doraemon_2019.ogg',
                     volume: 0.2,
                     startTime: 0,
                 },
                 'doraemon_no_uta_2019': {
                     name: '2019年 哆啦A夢之歌 放送40周年 角色合唱版本',
-                    url: 'https://static.wikia.nocookie.net/doraemon/images/4/45/Doraemon_no_Uta-_40th_Anniversary.ogg/revision/latest?cb=20190620133612&path-prefix=en',
+                    url: '/audio/doraemon_no_uta_2019.ogg',
                     volume: 0.2,
                     startTime: 0,
                 },
