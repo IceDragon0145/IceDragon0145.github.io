@@ -103,6 +103,9 @@ body {
 
 #div_document_front_page_text {
     position: absolute;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: auto;
 }
 
 .button_circle {
