@@ -1,9 +1,4 @@
 @media only screen and (orientation: landscape) {
-    #div_document_front_page_image {
-        background-position-x: 110%;
-        background-position-y: center;
-    }
-
     #div_document_front_page_text_container {
         background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     }
@@ -14,5 +9,11 @@
         left: 10%;
         right: 60%;
         animation: slide_in_left 1s;
+    }
+
+    #img_document_front_page_image {
+        position: absolute; 
+        height: 100%;
+        right: 0;
     }
 }

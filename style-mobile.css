@@ -1,9 +1,4 @@
 @media only screen and (orientation: portrait) {
-    #div_document_front_page_image {
-        background-position-x: center;
-        background-position-y: bottom;
-    }
-
     #div_document_front_page_text_container {
         background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
     }
@@ -15,5 +10,23 @@
         translate: 0 -50%;
         text-align: center;
         animation: slide_in_top 1s;
+    }
+
+    #img_document_front_page_image {
+        position: absolute; 
+        top: 50%;
+        width: 100%;
+    }
+
+    #paragraph_description_1 {
+        display: none;
+    }
+
+    #paragraph_description_2 {
+        display: none;
+    }
+
+    #paragraph_description_3 {
+        display: none;
     }
 }
