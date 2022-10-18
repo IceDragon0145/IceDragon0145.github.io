@@ -20,4 +20,22 @@
         top: 50%;
         object-fit: contain;
     }
+
+    #paragraph_description_1 {
+        visibility: hidden;
+        animation: slide_in_left 0.5s;
+        animation-delay: 0.5s;
+    }
+
+    #paragraph_description_2 {
+        visibility: hidden;
+        animation: slide_in_left 0.5s;
+        animation-delay: 0.75s;
+    }
+
+    #paragraph_description_3 {
+        visibility: hidden;
+        animation: slide_in_left 0.5s;
+        animation-delay: 1s;
+    }
 }

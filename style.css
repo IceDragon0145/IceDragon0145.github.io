@@ -110,6 +110,15 @@ body {
     overflow: auto;
 }
 
+#div_document_characters {
+    width: 100%;
+    height: 100%;
+}
+
+#div_document_characters_title.show {
+    animation: slide_in_top 1s;
+}
+
 .button_circle {
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;

@@ -25,20 +25,23 @@
                                 （ドラえもん）
                             </div>
                             <p>
-                                作者：藤子·F·不二雄<br/>
-                                主題：兒童、科幻類型日本漫畫
+                                藤子·F·不二雄<br/>
+                                兒童、科幻類型日本漫畫
                             </p>
-                            <p id="paragraph_description_1">
+                            <p id="paragraph_description_1" onanimationstart="this.style.visibility = 'visible';">
                                 故事敘述一隻來自22世紀貓型機器人——哆啦A夢，受原本主人野比世修之託從未來回到現代，幫助他高祖父野比大雄的故事。
                             </p>
-                            <p id="paragraph_description_2">
+                            <p id="paragraph_description_2" onanimationstart="this.style.visibility = 'visible';">
                                 主角——野比大雄是家中獨子，是住在日本的五年級小學生。他和來自未來22世紀的機器貓哆啦A夢共同生活。大雄雖然是普通小學生，但是對於運動和唸書都很不擅長。不僅學業成績很差，是零分的常駐得主，還時常遭到同學欺負。此外運氣也不好，經常遇到各種災難，連猜拳都經常會輸。
                             </p>
-                            <p id="paragraph_description_3">
+                            <p id="paragraph_description_3" onanimationstart="this.style.visibility = 'visible';">
                                 由於大雄此種特性，也影響到了未來子孫的生活和表現，為了讓情況有所改善，其子孫野比世修從未來的22世紀帶了哆啦A夢來幫助大雄改變命運，利用哆啦A夢許多未來世界的秘密道具協助大雄，故事就此展開。
                             </p>
                         </div>
                     </div>
+                </div>
+                <div id="div_document_characters">
+                    <div id="div_document_characters_title">角色介紹</div>
                 </div>
             </div>
             <div id="div_top_app_bar">
@@ -55,6 +58,16 @@
         </div>
         <div id="div_snack_bar"></div>
         <script>
+            const observer = new IntersectionObserver(entries => {
+                for(let entry of entries) {
+                    if(entry.target.id === 'div_document_characters_title') {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);
+                        continue;
+                    }
+                }
+            });
+
             let backgroundPlayer = document.createElement('audio');
             let backgroundTracks = {
                 'doraemon_no_uta_1992': {
@@ -163,6 +176,7 @@
                     });
                 };
             });
+            observer.observe(document.getElementById('div_document_characters_title'));
             setTitle('基礎程式設計 期末報告');
         </script>
     </body>
