@@ -68,6 +68,33 @@
                     }
                 }
             });
+            
+            const player = new Player();
+            player.addListener('onerror', e => {
+                showSnackBar(e.message || e, 5000);
+                if(e.name === 'NotAllowedError') {
+                    // autoplay failed.
+                    let autoplayDim = document.getElementById('div_autoplay_dim');
+                    autoplayDim.style.animation = 'fade_in 0.5s';
+                    autoplayDim.style.visibility = 'visible';
+                    autoplayDim.onclick = () => {
+                        player.skipTo();
+                        autoplayDim.style.animation = 'fade_out 0.5s';
+                        autoplayDim.style.visibility = '';
+                    };
+                }
+            });
+            player.addListener('onplay', name => showSnackBar(`正在播放「${name}」。`))
+            player.prepare().then(() => {
+                player.skipTo();
+            }).catch(e => {
+                showSnackBar(e.message || e);
+            });
+            /*
+                showSnackBar(e instanceof Error ? e.message : e);
+                if(e.name === 'NotAllowedError') {
+                }*/
+        
 
             let snackBarPendingList = [];
 
@@ -107,22 +134,6 @@
             };
             document.getElementById('div_document').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
 
-            const player = new Player();
-            player.prepare().catch(e => {
-              showSnackBar(e instanceof Error ? e.message : e);
-              if(e.name === 'NotAllowedError') {
-                // autoplay failed.
-                let autoplayDim = document.getElementById('div_autoplay_dim');
-                autoplayDim.style.animation = 'fade_in 0.5s';
-                autoplayDim.style.visibility = 'visible';
-                autoplayDim.onclick = () => {
-                    player.prepare().then(() => {
-                      autoplayDim.style.animation = 'fade_out 0.5s';
-                      autoplayDim.style.visibility = '';
-                    }).catch(alert);
-                };
-              }
-            });
             observer.observe(document.getElementById('div_document_characters_title'));
             setTitle('基礎程式設計 期末報告');
         </script>

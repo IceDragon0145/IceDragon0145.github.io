@@ -47,7 +47,7 @@ body {
     background-color: rgb(50, 50, 50);
     border: 1px solid rgb(50, 50, 50);
     border-radius: 8px;
-    box-shadow: 0 0 8px #666;
+    box-shadow: 0 0 8px black;
     color: white;
     visibility: hidden;
 }
