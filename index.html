@@ -57,6 +57,7 @@
             </div>
         </div>
         <div id="div_snack_bar"></div>
+        <script src="player.js"></script>
         <script>
             const observer = new IntersectionObserver(entries => {
                 for(let entry of entries) {
@@ -67,64 +68,6 @@
                     }
                 }
             });
-
-            let backgroundPlayer = document.createElement('audio');
-            let backgroundTracks = {
-                'doraemon_no_uta_1992': {
-                    name: '1992年 哆啦A夢之歌 山野智子版本',
-                    url: '/audio/doraemon_no_uta_1992.ogg',
-                    volume: 0.2,
-                    startTime: 2,
-                },
-                'hagushichao_2005': {
-                    name: '2005年 擁抱吧',
-                    url: '/audio/hagushichao_2005.ogg',
-                    volume: 0.2,
-                    startTime: 0,
-                },
-                'yume_wo_kanaete_doraemon_2007': {
-                    name: '2007年 實現夢想的哆啦A夢',
-                    url: '/audio/yume_wo_kanaete_doraemon_2007.ogg',
-                    volume: 0.2,
-                    startTime: 0,
-                },
-                'doraemon_2019': {
-                    name: '2019年 哆啦A夢（星野源） ',
-                    url: '/audio/doraemon_2019.ogg',
-                    volume: 0.2,
-                    startTime: 0,
-                },
-                'doraemon_no_uta_2019': {
-                    name: '2019年 哆啦A夢之歌 放送40周年 角色合唱版本',
-                    url: '/audio/doraemon_no_uta_2019.ogg',
-                    volume: 0.2,
-                    startTime: 0,
-                },
-            };
-
-            backgroundPlayer.onended = () => {
-                let names = Object.keys(backgroundTracks);
-                let index = names.indexOf(backgroundPlayer.getAttribute('track'));
-                playBackground(names[++index >= names.length ? 0 : index]);
-            };
-
-            function playBackground(trackName) {
-                return new Promise((resolve, reject) => {
-                    if(!trackName) trackName = 'doraemon_no_uta_1992';
-                    if(!backgroundTracks[trackName]) {
-                        console.error('Invalid track name "' + trackName + '".');
-                        reject();
-                    }
-                    backgroundPlayer.src = backgroundTracks[trackName].url;
-                    backgroundPlayer.volume = backgroundTracks[trackName].volume;
-                    backgroundPlayer.currentTime = backgroundTracks[trackName].startTime;
-                    backgroundPlayer.setAttribute('track', trackName);
-                    backgroundPlayer.play().then(() => {
-                        showSnackBar(`正在播放 「${backgroundTracks[trackName].name}」`);
-                        resolve();
-                    }).catch(reject);
-                });
-            }
 
             let snackBarPendingList = [];
 
@@ -164,17 +107,21 @@
             };
             document.getElementById('div_document').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
 
-            playBackground().catch(() => {
+            const player = new Player();
+            player.prepare().catch(e => {
+              showSnackBar(e instanceof Error ? e.message : e);
+              if(e.name === 'NotAllowedError') {
                 // autoplay failed.
                 let autoplayDim = document.getElementById('div_autoplay_dim');
                 autoplayDim.style.animation = 'fade_in 0.5s';
                 autoplayDim.style.visibility = 'visible';
                 autoplayDim.onclick = () => {
-                    playBackground().then(() => {
+                    player.prepare().then(() => {
                       autoplayDim.style.animation = 'fade_out 0.5s';
                       autoplayDim.style.visibility = '';
-                    });
+                    }).catch(alert);
                 };
+              }
             });
             observer.observe(document.getElementById('div_document_characters_title'));
             setTitle('基礎程式設計 期末報告');
