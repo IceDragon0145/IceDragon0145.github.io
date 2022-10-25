@@ -1,28 +1,33 @@
 @keyframes fade_in {
-  from {
-    opacity: 0%;
-  }
-  to {
-    opacity: 100%;
-  }
+    from {
+        visibility: visible;
+        opacity: 0%;
+    }
+    to {
+        visibility: visible;
+        opacity: 100%;
+    }
 }
 
 @keyframes fade_out {
-  from {
-    opacity: 100%;
-  }
-  to {
-    opacity: 0%;
-  }
+    from {
+        visibility: visible;
+        opacity: 100%;
+    }
+    to {
+        visibility: visible;
+        opacity: 0%;
+    }
 }
 
 @keyframes slide_in_left {
     from {
+        visibility: visible;
         opacity: 0%;
         transform: translate(-25%, 0);
     }
-
     to {
+        visibility: visible;
         opacity: 100%;
         transform: translate(0, 0);
     }
@@ -30,12 +35,48 @@
 
 @keyframes slide_in_top {
     from {
+        visibility: visible;
         opacity: 0%;
         transform: translate(0, -25%);
     }
-
     to {
+        visibility: visible;
         opacity: 100%;
         transform: translate(0, 0);
+    }
+}
+
+@keyframes slide_out_left {
+    from {
+        visibility: visible;
+        opacity: 100%;
+        transform: translate(0, 0);
+    }
+    to {
+        visibility: visible;
+        opacity: 0%;
+        transform: translate(-25%, 0);
+    }
+}
+
+@keyframes menu_dim_open {
+    from {
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes menu_dim_close {
+    from {
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    to {
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0);
     }
 }

@@ -44,8 +44,16 @@
                     <div id="div_document_characters_title">角色介紹</div>
                 </div>
             </div>
+            <div id="div_menu" style="visibility: hidden;" onclick="document.getElementById('span_menu_button').onclick()">
+                <div id="div_menu_container" style="visibility: hidden;">
+                    <ul style="margin: 0; padding: 0;">
+                        <li class="menu_item" onclick="window.location.href = '#div_document_front_page';document.getElementById('span_menu_button').onclick()">作品簡介</li>
+                        <li class="menu_item" onclick="window.location.href = '#div_document_characters';document.getElementById('span_menu_button').onclick()">角色介紹</li>
+                    </ul>
+                </div>
+            </div>
             <div id="div_top_app_bar">
-                <span class="material-symbols-outlined button_circle" style="padding: 16px; cursor: pointer; user-select: none;">menu</span>
+                <span id="span_menu_button" class="material-symbols-outlined button_circle" style="padding: 16px; cursor: pointer; user-select: none;">menu</span>
                 <div id="div_title"></div>
             </div>
         </div>
@@ -59,6 +67,30 @@
         <div id="div_snack_bar"></div>
         <script src="player.js"></script>
         <script>
+            document.getElementById('span_menu_button').onclick = () => {
+                let divMenu = document.getElementById('div_menu');
+                let divMenuContainer = document.getElementById('div_menu_container');
+                if(divMenu.hasAttribute('open')) {
+                    divMenuContainer.style.animation = 'slide_out_left 0.2s';
+                    divMenuContainer.style.visibility = 'hidden';
+                    divMenu.style.animation = 'menu_dim_close 0.2s';
+                    divMenu.style.visibility = '';
+                    divMenu.removeAttribute('open');
+                }
+                else {
+                    divMenuContainer.style.animation = 'slide_in_left 0.2s';
+                    divMenuContainer.style.visibility = 'visible';
+                    divMenu.style.animation = 'menu_dim_open 0.2s';
+                    divMenu.style.visibility = 'visible';
+                    divMenu.setAttribute('open', '');
+                }
+            };
+            document.getElementById('div_menu_container').onclick = e => {
+                e.stopPropagation();
+            }
+            document.getElementById('div_menu_container').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
+            document.getElementById('div_document').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
+
             const observer = new IntersectionObserver(entries => {
                 for(let entry of entries) {
                     if(entry.target.id === 'div_document_characters_title') {
@@ -90,11 +122,6 @@
             }).catch(e => {
                 showSnackBar(e.message || e);
             });
-            /*
-                showSnackBar(e instanceof Error ? e.message : e);
-                if(e.name === 'NotAllowedError') {
-                }*/
-        
 
             let snackBarPendingList = [];
 
@@ -132,7 +159,6 @@
                     snackBarElement.classList.add('hide');
                 }, length || 3000);
             };
-            document.getElementById('div_document').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
 
             observer.observe(document.getElementById('div_document_characters_title'));
             setTitle('基礎程式設計 期末報告');

@@ -1,5 +1,4 @@
 html {
-    scroll-behavior: smooth;
 }
 
 body {
@@ -32,6 +31,41 @@ body {
     width: 100%;
     background-color: white;
     box-shadow: 0 0 8px black;
+}
+
+#div_menu {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+}
+
+#div_menu_container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    min-width: 300px;
+    background-color: white;
+    box-shadow: 0 0 4px black;
+}
+
+li.menu_item {
+    height: 56px;
+    padding-left: 16px;
+    line-height: 56px;
+    cursor: pointer;
+    list-style: none;
+    transition: 0.2s;
+}
+
+li.menu_item:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+li.menu_item:active {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 #div_snack_bar {
@@ -87,6 +121,7 @@ body {
     top: 0px;
     bottom: 0px;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 #div_document_front_page_image {
