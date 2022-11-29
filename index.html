@@ -10,6 +10,11 @@
         <link href="style-desktop.css" rel="stylesheet" />
         <link href="style-mobile.css" rel="stylesheet" />
         <link href="anim.css" rel="stylesheet" />
+        <script>
+          if(!window.location.href.startsWith(http)) {
+            if(confirm('目前網頁可能會有部分資源無法載入，是否要嘗試重新導向至發佈於網路上的版本？')) window.location.href = 'https://IceDragon0145.github.io';
+          }
+        </script>
     </head>
     <body>
         <div style="position: fixed; top: 0px; left: 0px; height: 100%; width: 100%;">
@@ -42,14 +47,31 @@
                 </div>
                 <div id="div_document_characters">
                     <div id="div_document_characters_title">角色介紹</div>
+                    <div style="position: absolute; top: 90px; bottom: 16px; width: 100%; overflow-x: scroll; text-align: center;">
+                        <table style="width:max-content; margin-left: auto; margin-right: auto;">
+                            <tr>
+                                <th>哆啦A夢</th>
+                                <th>野比大雄</th>
+                                <th>源靜香</th>
+                                <th>骨川小夫</th>
+                                <th>剛田武</th>
+                                <th>出木杉英才</th>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div id="div_menu" style="visibility: hidden;" onclick="document.getElementById('span_menu_button').onclick()">
-                <div id="div_menu_container" style="visibility: hidden;">
+                <div id="div_menu_container">
                     <ul style="margin: 0; padding: 0;">
                         <li class="menu_item" onclick="window.location.href = '#div_document_front_page';document.getElementById('span_menu_button').onclick()">作品簡介</li>
                         <li class="menu_item" onclick="window.location.href = '#div_document_characters';document.getElementById('span_menu_button').onclick()">角色介紹</li>
                     </ul>
+                    <p style="position: absolute; bottom: 0; width: 100%; text-align: center;">
+                      <small>
+                        I'm a teapot. &#x1FAD6<br/>
+                        最後編輯於 20221123</small>
+                    </p>
                 </div>
             </div>
             <div id="div_top_app_bar">
@@ -72,34 +94,32 @@
                 let divMenuContainer = document.getElementById('div_menu_container');
                 if(divMenu.hasAttribute('open')) {
                     divMenuContainer.style.animation = 'slide_out_left 0.2s';
-                    divMenuContainer.style.visibility = 'hidden';
+                    divMenuContainer.style.transform = 'translate(-25%, 0)';
                     divMenu.style.animation = 'menu_dim_close 0.2s';
                     divMenu.style.visibility = '';
-                    divMenu.removeAttribute('open');
                 }
                 else {
                     divMenuContainer.style.animation = 'slide_in_left 0.2s';
-                    divMenuContainer.style.visibility = 'visible';
+                    divMenuContainer.style.display = '';
+                    divMenuContainer.style.transform = '';
                     divMenu.style.animation = 'menu_dim_open 0.2s';
                     divMenu.style.visibility = 'visible';
-                    divMenu.setAttribute('open', '');
                 }
             };
             document.getElementById('div_menu_container').onclick = e => {
                 e.stopPropagation();
             }
+            document.getElementById('div_menu_container').addEventListener('animationend', event => {
+                let divMenu = document.getElementById('div_menu');
+                let divMenuContainer = document.getElementById('div_menu_container');
+                if(divMenu.hasAttribute('open')) {
+                    divMenuContainer.style.display = 'none';
+                    divMenu.removeAttribute('open');
+                }
+                else divMenu.setAttribute('open', '');
+            });
             document.getElementById('div_menu_container').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
             document.getElementById('div_document').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
-
-            const observer = new IntersectionObserver(entries => {
-                for(let entry of entries) {
-                    if(entry.target.id === 'div_document_characters_title') {
-                        entry.target.classList.add('show');
-                        observer.unobserve(entry.target);
-                        continue;
-                    }
-                }
-            });
             
             const player = new Player();
             player.addListener('onerror', e => {
@@ -160,7 +180,6 @@
                 }, length || 3000);
             };
 
-            observer.observe(document.getElementById('div_document_characters_title'));
             setTitle('基礎程式設計 期末報告');
         </script>
     </body>
