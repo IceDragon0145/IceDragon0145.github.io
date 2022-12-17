@@ -59,24 +59,39 @@
     }
 }
 
-@keyframes menu_dim_open {
+@keyframes snack_bar_show {
     from {
         visibility: visible;
-        background-color: rgba(0, 0, 0, 0);
+        opacity: 0%;
+        transform: translate(0, 25%);
     }
     to {
         visibility: visible;
-        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 100%;
+        transform: translate(0, 0);
     }
 }
 
-@keyframes menu_dim_close {
+@keyframes snack_bar_hide {
     from {
         visibility: visible;
-        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 100%;
+        transform: translate(0, 0);
     }
     to {
         visibility: visible;
-        background-color: rgba(0, 0, 0, 0);
+        opacity: 0%;
+        transform: translate(0, 25%);
+    }
+}
+  
+@keyframes ripple {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2);
+        opacity: 0;
     }
 }

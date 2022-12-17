@@ -1,6 +1,6 @@
 @media only screen and (orientation: landscape) {
     #div_document_front_page_text_container {
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(0, 0, 0, 0));
     }
 
     #div_document_front_page_text {

@@ -15,6 +15,16 @@ body {
     visibility: hidden;
 }
 
+#div_autoplay_dim.show {
+    animation: fade_in 0.2s;
+    visibility: visible;
+}
+
+#div_autoplay_dim.hide {
+    animation: fade_out 0.2s;
+    visibility: hidden;
+}
+
 #div_autoplay_dim:hover {
     background-color: rgba(0, 0, 0, 0.6);
 }
@@ -26,6 +36,7 @@ body {
 #div_top_app_bar {
     position: absolute;
     width: 100%;
+    height: 56px;
     background-color: white;
     box-shadow: 0 0 8px black;
 }
@@ -39,13 +50,32 @@ body {
     visibility: hidden;
 }
 
+#div_menu.show {
+    animation: fade_in 0.4s;
+    visibility: visible;
+}
+
+#div_menu.hide {
+    animation: fade_out 0.4s;
+    visibility: hidden;
+}
+
 #div_menu_container {
     position: absolute;
     top: 0;
     bottom: 0;
+    margin-top: 56px;
     min-width: 300px;
     background-color: white;
     box-shadow: 0 0 4px black;
+}
+
+#div_menu_container.show {
+    animation: slide_in_left 0.4s;
+}
+
+#div_menu_container.hide {
+    animation: slide_out_left 0.4s;
 }
 
 li.menu_item {
@@ -65,10 +95,10 @@ li.menu_item:active {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-#div_snack_bar {
+.snack_bar {
     position: fixed;
-    top: 100%;
     right: 16px;
+    bottom: 16px;
     min-width: 300px;
     max-width: calc(100% - 64px);
     overflow: hidden;
@@ -83,24 +113,14 @@ li.menu_item:active {
     visibility: hidden;
 }
 
-#div_snack_bar.show {
-    -webkit-transition: 0.2s;
-    -moz-transition: 0.2s;
-    -ms-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
-    transform: translateY(calc(-100% - 16px));
+.snack_bar.show {
+    animation: snack_bar_show 0.2s;
     visibility: visible;
 }
 
-#div_snack_bar.hide {
-    -webkit-transition: 0.2s;
-    -moz-transition: 0.2s;
-    -ms-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
-    transform: translateY(0);
-    visibility: visible;
+.snack_bar.hide {
+    animation: snack_bar_hide 0.2s;
+    visibility: hidden;
 }
 
 #div_title {
@@ -117,6 +137,7 @@ li.menu_item:active {
     width: 100%;
     top: 0px;
     bottom: 0px;
+    margin-top: 56px;
     overflow: auto;
     scroll-behavior: smooth;
 }
@@ -132,7 +153,6 @@ li.menu_item:active {
     position: absolute;
     height: 100%;
     width: 100%;
-    color: white;
 }
 
 #div_document_front_page_text {
@@ -166,6 +186,12 @@ li.menu_item:active {
     animation: slide_in_top 1s;
 }
 
+#div_document_about {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
 .button_circle {
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
@@ -181,4 +207,25 @@ li.menu_item:active {
 
 .button_circle:active {
     background-color: rgba(0, 0, 0, 0.4);
+}
+
+.ripple {
+    background-color: skyblue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ripple:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    border: 1px solid skyblue;
+    animation: ripple 2s infinite;
+    z-index: -1;
 }

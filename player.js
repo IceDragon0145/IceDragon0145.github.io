@@ -1,4 +1,4 @@
-class Player {
+export class Player {
     #tracks = {};
     #listeners = {
         'onplay': [],
@@ -15,7 +15,7 @@ class Player {
             fetch('tracks.json')
                 .then(response => response.json())
                 .then(json => this.#tracks = json)
-                .then(resolve)
+                .then(() => resolve(this))
                 .catch(reject);
         });
     }

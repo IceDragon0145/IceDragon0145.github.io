@@ -10,11 +10,6 @@
         <link href="style-desktop.css" rel="stylesheet" />
         <link href="style-mobile.css" rel="stylesheet" />
         <link href="anim.css" rel="stylesheet" />
-        <script>
-          if(!window.location.href.startsWith(http)) {
-            if(confirm('目前網頁可能會有部分資源無法載入，是否要嘗試重新導向至發佈於網路上的版本？')) window.location.href = 'https://IceDragon0145.github.io';
-          }
-        </script>
     </head>
     <body>
         <div style="position: fixed; top: 0px; left: 0px; height: 100%; width: 100%;">
@@ -46,31 +41,54 @@
                     </div>
                 </div>
                 <div id="div_document_characters">
-                    <div id="div_document_characters_title">角色介紹</div>
-                    <div style="position: absolute; top: 90px; bottom: 16px; width: 100%; overflow-x: scroll; text-align: center;">
-                        <table style="width:max-content; margin-left: auto; margin-right: auto;">
-                            <tr>
-                                <th>哆啦A夢</th>
-                                <th>野比大雄</th>
-                                <th>源靜香</th>
-                                <th>骨川小夫</th>
-                                <th>剛田武</th>
-                                <th>出木杉英才</th>
-                            </tr>
-                        </table>
+                    <h1><div id="div_document_characters_title">角色介紹</div></h1>
+                    <table style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width:max-content; margin-left: auto; margin-right: auto; text-align: center;">
+                        <colgroup>
+                          <col span="5" style="width: 200px;">
+                        </colgroup>
+                        <tr>
+                            <td><img src="./img/doraemon.jpg"></td>
+                            <td><img src="./img/nobita.jpg"></td>
+                            <td><img src="./img/shizuka.jpg"></td>
+                            <td><img src="./img/takeshi.png"></td>
+                            <td><img src="./img/suneo.png"></td>
+                        </tr>
+                        <tr>
+                            <th>哆啦A夢</th>
+                            <th>野比大雄</th>
+                            <th>源靜香</th>
+                            <th>剛田武</th>
+                            <th>骨川小夫</th>
+                        </tr>
+                        <tr>
+                            <td>本作主角之一。來自未來世界（22世紀）的藍色貓型機器人（原本是黃色），身上的四次元百寶袋裝有許多道具。</td>
+                            <td>本作主角之一。常受師長責罵及同學欺負，但都能受到哆啦A夢保護。性格純粹而感性，平時膽小、懶惰成性，但只要受情感驅動時就能鼓起勇氣、奮力拼搏。</td>
+                            <td>讀書用功、性情溫和、愛好和平，並且獨立自主，不喜歡被女孩的身份束縛。</td>
+                            <td>性格凶暴、身強力壯，喜歡唱歌但水準極差。疼愛妹妹，懼怕媽媽。身為孩子王喜歡橫行霸道地欺負同學以滿足權力慾。</td>
+                            <td>家境富裕，喜愛藝術和洋貨。喜好賣弄炫耀、耍小聰明、非常自戀，經常幫胖虎欺負大雄，但自己也常會被胖虎欺負。</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="div_document_about">
+                    <div class="ripple" style="position: absolute; top: 50%; left: 50%; padding: 16px; margin: 16px; transform: translate(-50%, -50%); text-align: center;">
+                        <h1>關於網站</h1>
+                        <p>本網站由 陳柏家 開發，表單內容由 葉承佑 開發，資料由 陳葉術 蘇禎丞 蒐集和報告。</p>
+                        <p>本網站原始碼已上傳至 <a href="https://github.com/IceDragon0145/IceDragon0145.github.io">我的 GitHub 頁面</a> ，並且透過 <a href="https://pages.github.com">GitHub Pages</a> 架設。</p>
+                        <p><i>請注意，若以 Local 形式直接以瀏覽器開啟此網頁，部分功能可能無法正常運作。</i></p>
                     </div>
                 </div>
             </div>
-            <div id="div_menu" style="visibility: hidden;" onclick="document.getElementById('span_menu_button').onclick()">
+            <div id="div_menu" onclick="document.getElementById('span_menu_button').onclick()">
                 <div id="div_menu_container">
                     <ul style="margin: 0; padding: 0;">
                         <li class="menu_item" onclick="window.location.href = '#div_document_front_page';document.getElementById('span_menu_button').onclick()">作品簡介</li>
                         <li class="menu_item" onclick="window.location.href = '#div_document_characters';document.getElementById('span_menu_button').onclick()">角色介紹</li>
+                        <li class="menu_item" onclick="window.location.href = '#div_document_about';document.getElementById('span_menu_button').onclick()">關於網站</li>
                     </ul>
                     <p style="position: absolute; bottom: 0; width: 100%; text-align: center;">
                       <small>
                         I'm a teapot. &#x1FAD6<br/>
-                        最後編輯於 20221123</small>
+                        最後編輯於 20221217</small>
                     </p>
                 </div>
             </div>
@@ -86,101 +104,52 @@
                 <div style="text-align: center;">按一下以繼續瀏覽</div>
             </div>
         </div>
-        <div id="div_snack_bar"></div>
-        <script src="player.js"></script>
-        <script>
-            document.getElementById('span_menu_button').onclick = () => {
-                let divMenu = document.getElementById('div_menu');
-                let divMenuContainer = document.getElementById('div_menu_container');
-                if(divMenu.hasAttribute('open')) {
-                    divMenuContainer.style.animation = 'slide_out_left 0.2s';
-                    divMenuContainer.style.transform = 'translate(-25%, 0)';
-                    divMenu.style.animation = 'menu_dim_close 0.2s';
-                    divMenu.style.visibility = '';
-                }
-                else {
-                    divMenuContainer.style.animation = 'slide_in_left 0.2s';
-                    divMenuContainer.style.display = '';
-                    divMenuContainer.style.transform = '';
-                    divMenu.style.animation = 'menu_dim_open 0.2s';
-                    divMenu.style.visibility = 'visible';
-                }
-            };
-            document.getElementById('div_menu_container').onclick = e => {
-                e.stopPropagation();
-            }
-            document.getElementById('div_menu_container').addEventListener('animationend', event => {
-                let divMenu = document.getElementById('div_menu');
-                let divMenuContainer = document.getElementById('div_menu_container');
-                if(divMenu.hasAttribute('open')) {
-                    divMenuContainer.style.display = 'none';
-                    divMenu.removeAttribute('open');
-                }
-                else divMenu.setAttribute('open', '');
-            });
-            document.getElementById('div_menu_container').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
-            document.getElementById('div_document').style.marginTop = document.getElementById('div_top_app_bar').offsetHeight + 'px';
-            
+        <script type="module">
+            import { SnackBar } from './snackbar.js';
+            import { Player } from './player.js';
+
             const player = new Player();
             player.addListener('onerror', e => {
-                showSnackBar(e.message || e, 5000);
                 if(e.name === 'NotAllowedError') {
-                    // autoplay failed.
-                    let autoplayDim = document.getElementById('div_autoplay_dim');
-                    autoplayDim.style.animation = 'fade_in 0.5s';
-                    autoplayDim.style.visibility = 'visible';
-                    autoplayDim.onclick = () => {
+                    let dim = document.getElementById('div_autoplay_dim');
+                    for(let key of dim.classList.keys()) dim.classList.remove(key);
+                    dim.classList.add('show');
+                    dim.addEventListener('click', event => {
+                        event.stopPropagation();
                         player.skipTo();
-                        autoplayDim.style.animation = 'fade_out 0.5s';
-                        autoplayDim.style.visibility = '';
-                    };
+                        dim.classList.remove('show');
+                        dim.classList.add('hide');
+                    });
                 }
+                SnackBar.showSnackBar(e);
             });
-            player.addListener('onplay', name => showSnackBar(`正在播放「${name}」。`))
-            player.prepare().then(() => {
-                player.skipTo();
-            }).catch(e => {
-                showSnackBar(e.message || e);
+            player.addListener('onplay', name => {
+                SnackBar.showSnackBar(`正在播放 ${name}。`);
             });
+            player.prepare().then(player => player.skipTo()).catch(e => SnackBar.showSnackBar(e));
+        </script>
+        <script>
+            document.title = document.getElementById('div_title').innerText = '基礎程式設計 期末報告';
 
-            let snackBarPendingList = [];
-
-            function showSnackBar(message, length) {
-                let snackBarElement = document.getElementById('div_snack_bar');
-                if(snackBarElement.getAttribute('state') === 'showing') {
-                    snackBarPendingList.push({message: message, length: length});
-                    return;
+            document.getElementById('span_menu_button').onclick = () => {
+                let menu = document.getElementById('div_menu');
+                let container = document.getElementById('div_menu_container');
+                if(menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                    menu.classList.add('hide');
+                    container.classList.remove('show');
+                    container.classList.add('hide');
                 }
-                snackBarElement.setAttribute('state', 'showing');
-                snackBarElement.innerHTML = message;
-                snackBarElement.classList.add('show');
-                snackBarElement.addEventListener('transitionend', snackBarOnTransitionEnd);
-            }
-
-            function setTitle(title) {
-                document.title = title;
-                document.getElementById('div_title').innerHTML = title;
-            }
-
-            let snackBarOnTransitionEnd = event => {
-                if(event.propertyName !== 'transform') return;
-                let snackBarElement = document.getElementById('div_snack_bar');
-                if(snackBarElement.classList.contains('show') && snackBarElement.classList.contains('hide')) {
-                    snackBarElement.innerHTML = '';
-                    snackBarElement.classList.remove('show');
-                    snackBarElement.classList.remove('hide');
-                    snackBarElement.removeAttribute('state');
-                    snackBarElement.removeEventListener('transitionend', snackBarOnTransitionEnd);
-
-                    let pending = snackBarPendingList.shift();
-                    if(pending) showSnackBar(pending.message, pending.length);
+                else {
+                    menu.classList.add('show');
+                    menu.classList.remove('hide');
+                    container.classList.add('show');
+                    container.classList.remove('hide');
                 }
-                else setTimeout(() => {
-                    snackBarElement.classList.add('hide');
-                }, length || 3000);
             };
-
-            setTitle('基礎程式設計 期末報告');
+            document.getElementById('div_menu_container').addEventListener('click', e => {
+                e.stopPropagation();
+            });
         </script>
     </body>
 </html>
