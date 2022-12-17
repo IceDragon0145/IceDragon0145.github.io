@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>表單</title>
+    </head>
+
+    <body>
+        <h3 style="text-align: center;">註冊</h3><hr>
+        <form id="form_main" style="text-align: center;" action="登入.html">
+            <input type="text" id="姓名" name="姓名" placeholder="姓名" pattern="^[\u4e00-\u9fa5]+$|^[a-zA-Z\s]+$" size="25" required>
+            <br><input type="text" id="帳號" name="帳號" placeholder="帳號(含英文六到十六個字元內)" pattern="\[^\d|chun]+[^\w\.\/]" size="25" maxlength="16" minlength="6" required>
+            <br><input type="password" id="密碼" name="密碼" placeholder="密碼(含英文六到十六個字元內)" pattern="\[^\d|chun]+[^\w\.\/]" size="25" maxlength="16" minlength="6" required>
+            <br><input type="password" id="確認密碼" name="確認密碼" placeholder="確認密碼" pattern="\[^\d|chun]+[^\w\.\/]" size="25" maxlength="16" minlength="6" required>    
+            <br><label>生日</label><input type="date" id="生日" name="生日"> 
+            <br><label>性別</label> <input type="radio" id="性別" name="性別" value="男"><label>男</label>
+                                    <input type="radio" id="性別" name="性別" value="女"><label>女</label>
+            <br><input type="submit" value="註冊"> 
+        </form>
+    </body>
+
+    <script language="javascript">
+        document.getElementById('form_main').onsubmit = () => { return check() };
+
+        window.onload = function ()
+        {
+            document.getElementById('姓名').focus();
+        }
+
+        function check()
+        {
+            var pwd=document.getElementById("密碼").value;
+            var pwd1=document.getElementById("確認密碼").value;
+            if(pwd1!=pwd)
+            {
+                alert("兩次密碼不一樣");
+                return false;
+            }
+            else return true;
+        }
+    </script>
+</html>

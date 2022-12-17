@@ -186,6 +186,12 @@ li.menu_item:active {
     animation: slide_in_top 1s;
 }
 
+#div_document_form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
 #div_document_about {
     position: relative;
     width: 100%;
